@@ -8,6 +8,8 @@ I created this installation for Vagrant/VirtualBox because I couldn't get email
 working from the Docker image.
 
 - Clone this repository: `git clone https://github.com/m0nty/huginn-vagrant.git`
+- Either use ./setup.sh for semi-automatic configuration via a dialog interface.
+  (If you do this, skip down to the line about config.vm.box below.) Or ...
 - Edit the `env` file, which will be copied to `/home/huginn/huginn/.env`
   (look for the FIXME comments in the file to see what you need to adjust).
 - Edit `provision.sh` and change the MySQL passwords for the root MySQL user and

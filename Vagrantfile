@@ -13,5 +13,5 @@ Vagrant.configure(2) do |config|
   config.vm.hostname = "huginn.local"
   config.vm.box_check_update = false
   config.vm.provision "shell", inline: "/vagrant/provision.sh"
-  config.vm.network :forwarded_port, guest:3000, host:3000, id:"nginx", host_ip:"127.0.0.1", auto_correct: false
+  config.vm.network :forwarded_port, guest:3000, host:3000, id:"nginx", host_ip:"127.0.0.1", auto_correct: true
 end

@@ -28,16 +28,15 @@ adduser --disabled-login --gecos 'Huginn' huginn
 
 # Install the database packages:
 # FIXME (next two lines)
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password rootmysqlpassword'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password rootmysqlpassword'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password DATABASE_ROOT_PASSWORD'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password DATABASE_ROOT_PASSWORD'
 apt-get install -y mysql-server-5.5 mysql-server mysql-client libmysqlclient-dev
 
 # Set up MySQL user
-# FIXME: Next line, use the same as DATABASE_USERNAME and DATABASE_PASSWORD from the env file
-mysql -u root -prootmysqlpassword <<< "CREATE USER 'huginn'@'localhost' IDENTIFIED BY 'mysqlpassword';"
-# FIXME: Next two lines, use the same as 'rootmysqlpassword' above
-mysql -u root -prootmysqlpassword <<< "SET storage_engine=INNODB;"
-mysql -u root -prootmysqlpassword <<< "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES ON huginn_production.* TO 'huginn'@'localhost';"
+# FIXME: Next three lines, use the same DATABASE USERNAME and DATABASE PASSWORD from the env file, DATABASE ROOT PASSWORD from above
+mysql -u root -pDATABASE_ROOT_PASSWORD <<< "CREATE USER 'DATABASE_USERNAME'@'localhost' IDENTIFIED BY 'DATABASE_PASSWORD';"
+mysql -u root -pDATABASE_ROOT_PASSWORD <<< "SET storage_engine=INNODB;"
+mysql -u root -pDATABASE_ROOT_PASSWORD <<< "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES ON huginn_production.* TO 'DATABASE_USERNAME'@'localhost';"
 
 # Clone the Source
 cd /home/huginn
