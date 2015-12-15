@@ -6,7 +6,8 @@ https://github.com/cantino/huginn/blob/master/doc/manual/installation.md
 
 **Setup Huginn under VirtualBox, with minimal configuration required.**
 
-A working VirtualBox installation is a prerequisite.
+A working VirtualBox installation is a prerequisite, as well as Vagrant
+(from vagrantup.com).
 
 If you know the settings you will use for your Huginn installation (such
 as SMTP host, MySQL settings, etc) you can:
