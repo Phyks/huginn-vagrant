@@ -12,6 +12,7 @@ as SMTP host, MySQL settings, etc) you can:
 - Clone this repository: `git clone https://github.com/m0nty/huginn-vagrant.git`
 - Jump straight in with `./setup.sh` and follow the prompts. No attempt 
   is made to validate your input while you do this.
+- Run `vagrant up` to provision your Huginn instance.
 
 If you prefer to edit the config files yourself:
 
@@ -28,6 +29,7 @@ If you prefer to edit the config files yourself:
 - Edit the `huginn` file if you want to change the listening address and port for
   your Huginn instance.
 - I don't think you need to change the Procfile, but you may as well check anyway.
+- After that, run `vagrant up` to provision your Huginn instance.
 
 Please let me know if I've messed up in any way. I've got my Huginn instance working
 now, and I'm delighted with it. I just wanted to help out if anyone else is having
