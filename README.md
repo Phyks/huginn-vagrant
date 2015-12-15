@@ -4,14 +4,17 @@ Based on instructions here:
 
 https://github.com/cantino/huginn/blob/master/doc/manual/installation.md
 
-Setup Huginn under VirtualBox, with minimal configuration required.
+**Setup Huginn under VirtualBox, with minimal configuration required.**
+
+A working VirtualBox installation is a prerequisite.
 
 If you know the settings you will use for your Huginn installation (such
 as SMTP host, MySQL settings, etc) you can:
 
 - Clone this repository: `git clone https://github.com/m0nty/huginn-vagrant.git`
 - Jump straight in with `./setup.sh` and follow the prompts. No attempt 
-  is made to validate your input while you do this.
+  is made to validate your input while you do this, but sensible defaults are
+  suggested for usernames, passwords, etc.
 - Run `vagrant up` to provision your Huginn instance.
 
 If you prefer to edit the config files yourself:
