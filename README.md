@@ -9,14 +9,14 @@ https://github.com/cantino/huginn/blob/master/doc/manual/installation.md
 A working VirtualBox installation is a prerequisite, as well as Vagrant
 (from vagrantup.com).
 
-# Testing
+## Testing
 
 This repository is pulled to my server and test-compiled each day, so I hope
 I will catch any problems due to up-stream changes in the Huginn project
 itself. Email burns dot sj at gmail dot com if I missed anything or if you
 find any other problems.
 
-# Guided Installation
+## Guided Installation
 
 If you know the settings you will use for your Huginn installation (such
 as SMTP host, MySQL settings, etc) you can:
@@ -27,7 +27,7 @@ as SMTP host, MySQL settings, etc) you can:
   suggested for usernames, passwords, etc.
 - Run `vagrant up` to provision your Huginn instance.
 
-# Manually Editing the Config Files
+## Manually Editing the Config Files
 
 You do not need to do this if you successfully ran `./setup.sh` above. But, 
 if you prefer to edit the config files yourself or you need to correct a setting:
@@ -51,7 +51,7 @@ Please let me know if I've messed up in any way. I've got my Huginn instance wor
 now, and I'm delighted with it. I just wanted to help out if anyone else is having
 problems with the other installation methods.
 
-# To-do
+## To-do
 
 I'll probably do a Dockerfile sometime, so you can create a docker instance yourself
 without pulling the Huginn docker image.
