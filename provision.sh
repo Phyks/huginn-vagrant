@@ -20,6 +20,9 @@ cd ruby-2.2.3
 make -j`nproc`
 make install
 
+# Update rake to avoid error
+gem install --force rake -v 10.5.0
+
 # Install the bundler and foreman gems:
 gem install bundler foreman --no-ri --no-rdoc
 
@@ -28,15 +31,15 @@ adduser --disabled-login --gecos 'Huginn' huginn
 
 # Install the database packages:
 # FIXME (next two lines)
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password DATABASE_ROOT_PASSWORD'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password DATABASE_ROOT_PASSWORD'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password ct2yqS21jFWxI1Js'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password ct2yqS21jFWxI1Js'
 apt-get install -y mysql-server-5.5 mysql-server mysql-client libmysqlclient-dev
 
 # Set up MySQL user
 # FIXME: Next three lines, use the same DATABASE USERNAME and DATABASE PASSWORD from the env file, DATABASE ROOT PASSWORD from above
-mysql -u root -pDATABASE_ROOT_PASSWORD <<< "CREATE USER 'DATABASE_USERNAME'@'localhost' IDENTIFIED BY 'DATABASE_PASSWORD';"
-mysql -u root -pDATABASE_ROOT_PASSWORD <<< "SET storage_engine=INNODB;"
-mysql -u root -pDATABASE_ROOT_PASSWORD <<< "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES ON huginn_production.* TO 'DATABASE_USERNAME'@'localhost';"
+mysql -u root -pct2yqS21jFWxI1Js <<< "CREATE USER 'huginn'@'localhost' IDENTIFIED BY 'vMB4OQGAW8uWgQB4';"
+mysql -u root -pct2yqS21jFWxI1Js <<< "SET storage_engine=INNODB;"
+mysql -u root -pct2yqS21jFWxI1Js <<< "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES ON huginn_production.* TO 'huginn'@'localhost';"
 
 # Clone the Source
 cd /home/huginn
