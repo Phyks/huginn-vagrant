@@ -22,14 +22,14 @@ If you know the settings you will use for your Huginn installation (such
 as SMTP host, MySQL settings, etc) you can:
 
 - Clone this repository: `git clone https://github.com/m0nty/huginn-vagrant.git`
-- Jump straight in with `./setup.sh` and follow the prompts. No attempt 
+- Jump straight in with `./setup.sh` and follow the prompts. No attempt
   is made to validate your input while you do this, but sensible defaults are
   suggested for usernames, passwords, etc.
 - Run `vagrant up` to provision your Huginn instance.
 
 ## Manually Editing the Config Files
 
-You do not need to do this if you successfully ran `./setup.sh` above. But, 
+You do not need to do this if you successfully ran `./setup.sh` above. But,
 if you prefer to edit the config files yourself or you need to correct a setting:
 
 - Clone this repository: `git clone https://github.com/m0nty/huginn-vagrant.git`
@@ -50,6 +50,14 @@ if you prefer to edit the config files yourself or you need to correct a setting
 Please let me know if I've messed up in any way. I've got my Huginn instance working
 now, and I'm delighted with it. I just wanted to help out if anyone else is having
 problems with the other installation methods.
+
+## Using the host database
+
+If you want to use the host database, you should remove the "Install the
+database packages" and "Set up MySQL user" in the `provision.sh` script, and
+run everything normally.
+
+You should use `10.0.2.2` as the MySQL host in your `env` configuration.
 
 ## To-do
 
