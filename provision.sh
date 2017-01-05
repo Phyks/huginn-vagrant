@@ -7,7 +7,7 @@ update-alternatives --set editor /usr/bin/vim.basic
 # Install the required packages (needed to compile Ruby and native extensions to Ruby gems):
 sudo apt-get install -y runit build-essential git zlib1g-dev libyaml-dev libssl-dev libgdbm-dev \
   libreadline-dev libncurses5-dev libffi-dev curl openssh-server checkinstall libxml2-dev libxslt-dev \
-  libcurl4-openssl-dev libicu-dev logrotate python-docutils pkg-config cmake nodejs graphviz
+  libcurl4-openssl-dev libicu-dev logrotate python-docutils pkg-config cmake nodejs graphviz libmysqlclient-dev
 
 # Remove the old Ruby versions if present:
 apt-get remove -y ruby1.8 ruby1.9
@@ -20,8 +20,8 @@ cd ruby-2.2.3
 make -j`nproc`
 make install
 
-# Update rake to avoid error
-gem install --force rake -v 10.5.0
+# Install rake
+gem install rake
 
 # Install the bundler and foreman gems:
 gem install bundler foreman --no-ri --no-rdoc
@@ -33,7 +33,7 @@ adduser --disabled-login --gecos 'Huginn' huginn
 # FIXME (next two lines)
 debconf-set-selections <<< 'mysql-server mysql-server/root_password password ct2yqS21jFWxI1Js'
 debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password ct2yqS21jFWxI1Js'
-apt-get install -y mysql-server-5.5 mysql-server mysql-client libmysqlclient-dev
+apt-get install -y mysql-server-5.5 mysql-server mysql-client
 
 # Set up MySQL user
 # FIXME: Next three lines, use the same DATABASE USERNAME and DATABASE PASSWORD from the env file, DATABASE ROOT PASSWORD from above
@@ -75,13 +75,13 @@ sudo -u huginn -H bundle exec rake assets:precompile RAILS_ENV=production
 sudo -u huginn  cp /vagrant/Procfile /home/huginn/huginn/Procfile
 
 # Export the init scripts:
-rake production:export
+sudo bundle exec rake production:export
 
 # Setup Logrotate
 cp deployment/logrotate/huginn /etc/logrotate.d/huginn
 
 # Check it's running
-rake production:status
+sudo bundle exec rake production:status
 
 # Install nginx
 apt-get install -y nginx
